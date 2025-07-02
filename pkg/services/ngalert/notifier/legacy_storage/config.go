@@ -9,7 +9,7 @@ import (
 	"github.com/grafana/grafana/pkg/services/ngalert/models"
 )
 
-type Crypto interface {
+type crypto interface {
 	EncryptExtraConfigs(ctx context.Context, config *definitions.PostableUserConfig) error
 	DecryptExtraConfigs(ctx context.Context, config *definitions.PostableUserConfig) error
 }
@@ -38,10 +38,10 @@ type ConfigRevision struct {
 }
 type alertmanagerConfigStoreImpl struct {
 	store  amConfigStore
-	crypto Crypto
+	crypto crypto
 }
 
-func NewAlertmanagerConfigStore(store amConfigStore, crypto Crypto) *alertmanagerConfigStoreImpl {
+func NewAlertmanagerConfigStore(store amConfigStore, crypto crypto) *alertmanagerConfigStoreImpl {
 	return &alertmanagerConfigStoreImpl{store: store, crypto: crypto}
 }
 
