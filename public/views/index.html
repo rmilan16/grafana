@@ -2,6 +2,7 @@
 <html lang="[[.User.Language]]">
   <head>
     [[ if and .CSPEnabled .IsDevelopmentEnv ]]
+    <!-- SCP Testing -->
     <!-- Cypress overwrites CSP headers in HTTP requests, so this is required for e2e tests-->
     <meta  http-equiv="Content-Security-Policy" content="[[.CSPContent]]"/>
     [[ end ]]
